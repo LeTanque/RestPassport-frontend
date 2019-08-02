@@ -1,41 +1,49 @@
 import React, {
   useState,
   useEffect,
-  useReducer,
-  useContext,
-  createContext
+  // useReducer,
+  // useContext,
+  // createContext
 } from "react";
 
 import { getRestaurants } from "../../actions/Restaurants"; //redux
 import { getVisited, addVisited } from "../../actions/Restaurants"; //redux
 import { connect } from "react-redux"; //redux
 import { Container, Header, Grid, Checkbox, Input, Loader } from "semantic-ui-react";
-import axios from "axios";
-import RestaurantModal from '../passport-restaurants/restaurantModal/restaurantModal'
+// import axios from "axios";
+import RestaurantCard from '../passport-restaurants/restaurantCard'
 
 
 const Passport = props => {
   const { getRestaurants, getVisited } = props;
   //checking state of stamped , if true  checkmark will be added to component
-  const [stamped, setStamped] = useState(true);
+  // const [stamped, setStamped] = useState(true);
   const [checked, setChecked] = useState(true);
-  const [cols, setCols] = useState(4);
-  const [hovered, setHovered] = useState(false);
+  // const [cols, setCols] = useState(4);
+  const cols = 4
+  // const [hovered, setHovered] = useState(false);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searching, setSearching] = useState(false);
-  const [id, setId] = useState('')
+  // const [id, setId] = useState('')
 
 
   const toggle = () => setChecked(!checked);
 
+
   useEffect(() => {
     getRestaurants();
-    getVisited();
-  }, [getRestaurants,getVisited,props.addingRest, props.delRest]);
+    getVisited(2);
+  }, [
+      getRestaurants, 
+      getVisited, 
+      props.addingRest, 
+      props.delRest
+    ]);
 
-
+  
+  
   const searchRestaurantsHandler = e => {
-    const restaurants = props.restaurants.body.filter(r => {
+    const restaurants = props.restaurants.filter(r => {
       if (r.name.toLowerCase().includes(e.target.value.toLowerCase())) {
         return r;
       }
@@ -43,6 +51,9 @@ const Passport = props => {
     setSearching(true);
     setFilteredRestaurants(restaurants);
   };
+  
+  
+  console.log("Rest list:", props.restaurants, props)
 
 
   return (
@@ -79,16 +90,24 @@ const Passport = props => {
             {searching
               ? 
                 filteredRestaurants.map(rest => (
-                  <RestaurantModal rest={rest} key={rest.id}  savedRestaurants= {props.savedRestaurants}/>
+                  <RestaurantCard 
+                    key={rest.id} 
+                    rest={rest}   
+                    // savedRestaurants={props.savedRestaurants}
+                  />
                 ))
               : 
-              props.restaurants.body.map(rest => (
-                  <RestaurantModal rest={rest} key={rest.id}   savedRestaurants= {props.savedRestaurants}/>
-                ))}
+                props.restaurants.map(rest => (
+                  <RestaurantCard 
+                    key={rest.id} 
+                    rest={rest}   
+                    // savedRestaurants={props.savedRestaurants}
+                  />
+                ))
+            }
           </Grid>
         )}
       </div>
-      <div>{console.log(props.restaurants)}</div>
     </Container>
   );
 };
@@ -105,5 +124,9 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getRestaurants,getVisited,addVisited }
+  { 
+    getRestaurants,
+    getVisited,
+    addVisited 
+  }
 )(Passport);

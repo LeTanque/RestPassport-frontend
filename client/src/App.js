@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import './css/access.scss';
-import Passport from './components/restaurant-list/Passport.js';
+import Passport from './components/restaurant-list/RestaurantList';
 import Passports from './components/passports/Passports';
 import NavBar from './components/nav-bar/nav-bar';
 import Landing from './components/access/Landing';

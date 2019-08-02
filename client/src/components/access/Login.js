@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import { Form as UIForm } from 'semantic-ui-react';
+// import { Form as UIForm } from 'semantic-ui-react';
 
 const Login = props => {
 	return (
@@ -40,38 +40,38 @@ const Login = props => {
 						alignItems    : 'center',
 					}}
 					onSubmit={props.handleSubmit}>
-					<UIForm className='loginForm'>
-						<div>
-							{props.touched.username && props.errors.username && <h3>{props.errors.username}</h3>}
 
-							<Field
-								placeholder='Username'
-								label='username'
-								name='username'
-								id='username'
-								type='text'
-								onChange={props.handleChange}
-								width='4'
-							/>
-						</div>
+					<div>
+						{props.touched.username && props.errors.username && <h3>{props.errors.username}</h3>}
 
-						<div>
-							{props.touched.password && props.errors.password && <h3>{props.errors.password}</h3>}
-							<Field
-								placeholder='Password'
-								label='password'
-								name='password'
-								id='password'
-								type='password'
-								onChange={props.handleChange}
-								width='4'
-							/>
-						</div>
+						<Field
+							placeholder='Username'
+							label='username'
+							name='username'
+							id='username'
+							type='text'
+							onChange={props.handleChange}
+							width='4'
+						/>
+					</div>
 
-						<button type='submit' class='ui button'>
-							Login
-						</button>
-					</UIForm>
+					<div>
+						{props.touched.password && props.errors.password && <h3>{props.errors.password}</h3>}
+						<Field
+							placeholder='Password'
+							label='password'
+							name='password'
+							id='password'
+							type='password'
+							onChange={props.handleChange}
+							width='4'
+						/>
+					</div>
+
+					<button type='submit' className='ui button'>
+						Login
+					</button>
+
 				</Form>
 			)}
 		/>

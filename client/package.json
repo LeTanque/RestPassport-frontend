@@ -2,6 +2,12 @@
 	"name": "restaurant-passport",
 	"version": "0.1.0",
 	"private": true,
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject"
+	},
 	"dependencies": {
 		"axios": "^0.19.0",
 		"formik": "^1.5.8",
@@ -23,18 +29,19 @@
 		"uuid": "^3.3.2",
 		"yup": "^0.27.0"
 	},
-	"scripts": {
-		"tailwindcss": "npx tailwind build src/css/index.css -c src/css/tailwind.config.js -o src/css/tailwind.css",
-		"start": "npm run tailwindcss && react-scripts start",
-		"build": "npm run tailwindcss && react-scripts build",
-		"test": "react-scripts test",
-		"eject": "react-scripts eject"
-	},
 	"eslintConfig": {
 		"extends": "react-app"
 	},
 	"browserslist": {
-		"production": [ ">0.2%", "not dead", "not op_mini all" ],
-		"development": [ "last 1 chrome version", "last 1 firefox version", "last 1 safari version" ]
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
 	}
 }

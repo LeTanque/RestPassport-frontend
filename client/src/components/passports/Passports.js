@@ -8,7 +8,7 @@ import passportImage from '../../assests/images/passsport.jpg';
 const Passports = () => {
 	return (
 		<div>
-			<Header as='h1' color='#085F63' className='ui header'>
+			<Header as='h1' color='black' className='ui header'>
 				My Passport
 			</Header>
 			<Image src={passportImage} size='large' circular centered as={Link} to='/restaurants' />

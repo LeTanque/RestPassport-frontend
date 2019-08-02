@@ -32,11 +32,12 @@ export const searchPosts = payload => {
 	return { type: SEARCH, payload };
 };
 
-export const getVisited = () => dispatch => {
+export const getVisited = userId => dispatch => {
 	dispatch({ type: FETCH_USER_START });
 	axiosWithAuth()
-		.get('https://restaurant-app-appi.herokuapp.com/api/v1/restaurants/visited')
+		.get(`https://restaurant-app-appi.herokuapp.com/api/v1/${userId}/passports`)
 		.then(res => {
+			console.log("getVisited action response:", res)
 			dispatch({ type: FETCH_USER_SUCCESS, payload: res.data });
 		})
 		.catch(err => dispatch({ type: FETCH_USER_FAIL, payload: err }));

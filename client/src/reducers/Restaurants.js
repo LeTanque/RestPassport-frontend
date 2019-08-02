@@ -36,7 +36,7 @@ function RestaurantData(state = initialState, action) {
     case FETCH_RESTAURANTS_SUCCESS:
       return {
         ...state,
-        restaurants: action.payload,
+        restaurants: action.payload.body,
         isFetching: true,
         isFetchingSaved: true,
         error: ""
@@ -82,7 +82,7 @@ function RestaurantData(state = initialState, action) {
     case ADD_REST_SUCCESS:
       return {
         ...state,
-        // savedRestaurants: action.payload,
+        savedRestaurants: action.payload,
         addingRest: false,
         error: ""
       };
@@ -100,7 +100,7 @@ function RestaurantData(state = initialState, action) {
     case DEL_REST_SUCCESS:
       return {
         ...state,
-        // savedRestaurants: action.payload,
+        savedRestaurants: action.payload,
         delRest: false,
         error: ""
       };
